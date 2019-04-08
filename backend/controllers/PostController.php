@@ -36,6 +36,7 @@ class PostController extends Controller
     public function actionIndex()
     {
         $searchModel = new PostSearch();
+        var_dump(Yii::$app->request->queryParams);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

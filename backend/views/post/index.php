@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'filterModel' => $searchModel,  //生成查询表单
         'columns' => [
           //  ['class' => 'yii\grid\SerialColumn'],
 
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
 //            'content:ntext',
 //            'tags:ntext',
-            ['attribute'=>'author_id','value'=>'author.nickname'],
+            ['attribute'=>'authorName','label'=>'作者','value'=>'author.nickname'],
             ['attribute'=>'status','value'=>'status0.name','filter'=>\common\models\Poststatus::find()->select(['name','id'])->orderBy('position')->indexBy('id')->column(),],
             //'create_time:datetime',
             //'update_time:datetime',

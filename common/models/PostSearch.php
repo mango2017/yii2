@@ -12,14 +12,20 @@ use common\models\Post;
  */
 class PostSearch extends Post
 {
+    //添加额外属性
+    public function attributes(){
+        return array_merge(parent::attributes(),['authorName']);
+    }
+
     /**
      * {@inheritdoc}
+     * 这个方法相当于重写了
      */
     public function rules()
     {
         return [
             [['id', 'status', 'create_time', 'update_time', 'author_id'], 'integer'],
-            [['title', 'content', 'tags'], 'safe'],
+            [['title', 'content', 'tags','authorName'], 'safe'],
         ];
     }
 
@@ -56,7 +62,7 @@ class PostSearch extends Post
             ]
         ]);
 
-        $this->load($params);
+        $this->load($params); //把表单的值快速赋值给模型属性
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -76,6 +82,18 @@ class PostSearch extends Post
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'tags', $this->tags]);
+
+
+        $query->join('INNER JOIN','Adminuser','post.author_id = Adminuser.id');
+        $query->andFilterWhere(['like','Adminuser.nickname',$this->authorName]);
+
+        //按作者进行排序
+        $dataProvider->sort->attributes['authorName'] = [
+          'asc'=>['Adminuser.nickname'=>SORT_ASC],
+          'desc'=>['Adminuser.nickname'=>SORT_DESC],
+        ];
+
+
 
         return $dataProvider;
     }
