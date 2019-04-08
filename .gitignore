@@ -28,3 +28,10 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+
+
+/frontend/controllers/QuestionnaireController.php
+
+/common/models/Questionnaire.php
+
+
