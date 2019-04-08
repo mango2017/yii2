@@ -8,6 +8,7 @@ use common\models\Post;
 
 /**
  * PostSearch represents the model behind the search form of `common\models\Post`.
+ * 搜索功能
  */
 class PostSearch extends Post
 {
@@ -43,9 +44,16 @@ class PostSearch extends Post
         $query = Post::find();
 
         // add conditions that should always apply here
-
+        //可以进行分页和排序
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>['pageSize'=>6],//分页
+            'sort'=>[
+                'defaultOrder'=>[
+                    'id'=>SORT_DESC
+                ],  //排序
+                'attributes'=>['id','title']  //哪些属性可以排序
+            ]
         ]);
 
         $this->load($params);
