@@ -11,6 +11,10 @@ use common\models\Comment;
  */
 class CommentSearch extends Comment
 {
+    //添加额外属性
+    public function attributes(){
+        return array_merge(parent::attributes(),['user.username','post.title']);
+    }
     /**
      * {@inheritdoc}
      */
@@ -18,7 +22,7 @@ class CommentSearch extends Comment
     {
         return [
             [['id', 'status', 'create_time', 'userid', 'post_id', 'remind'], 'integer'],
-            [['content', 'email', 'url'], 'safe'],
+            [['content', 'email', 'url','user.username','post.title'], 'safe'],
         ];
     }
 
@@ -58,8 +62,8 @@ class CommentSearch extends Comment
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'status' => $this->status,
+            'comment.id' => $this->id,
+            'comment.status' => $this->status,
             'create_time' => $this->create_time,
             'userid' => $this->userid,
             'post_id' => $this->post_id,
@@ -69,6 +73,24 @@ class CommentSearch extends Comment
         $query->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'url', $this->url]);
+
+        $query->join('INNER JOIN','user','comment.userid=user.id');
+        $query->andFilterWhere(['like','user.username',$this->getAttribute('user.username')]);
+
+
+        $query->join('INNER JOIN','post','comment.post_id=post.id');
+        $query->andFilterWhere(['like','post.title',$this->getAttribute('post.title')]);
+
+        $dataProvider->sort->attributes['user.username'] = [
+            'asc'=>['user.username'=>SORT_ASC],
+            'desc'=>['user.username'=>SORT_DESC],
+        ];
+
+        $dataProvider->sort->attributes['post.title'] = [
+            'asc'=>['post.title'=>SORT_ASC],
+            'desc'=>['post.title'=>SORT_DESC],
+        ];
+
 
         return $dataProvider;
     }

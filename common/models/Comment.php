@@ -54,14 +54,14 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Content',
-            'status' => 'Status',
-            'create_time' => 'Create Time',
-            'userid' => 'Userid',
+            'content' => '内容',
+            'status' => '状态',
+            'create_time' => '发布时间',
+            'userid' => '用户',
             'email' => 'Email',
             'url' => 'Url',
-            'post_id' => 'Post ID',
-            'remind' => 'Remind',
+            'post_id' => '文章',
+//            'remind' => 'Remind',
         ];
     }
 
@@ -87,5 +87,11 @@ class Comment extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'userid']);
+    }
+
+    public function getBeginning(){
+        $tmpStr = strip_tags($this->content);
+        $tmpLen = mb_strlen($tmpStr);
+        return mb_substr($tmpStr,0,10).(($tmpLen>20)?'...':'');
     }
 }
