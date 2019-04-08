@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
 //    'modules' => [],
+    'language'=>'zh-CN',//英文的home变成中文的首页
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
