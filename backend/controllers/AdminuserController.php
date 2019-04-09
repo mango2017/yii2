@@ -4,7 +4,6 @@ namespace backend\controllers;
 
 use backend\models\ResetpwdForm;
 use backend\models\SignupForm;
-use frontend\models\ResetPasswordForm;
 use Yii;
 use common\models\Adminuser;
 use common\models\AdminuserSearch;
