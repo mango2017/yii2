@@ -91,6 +91,13 @@ class CommentSearch extends Comment
             'desc'=>['post.title'=>SORT_DESC],
         ];
 
+        $dataProvider->sort->defaultOrder = [
+            'status'=>SORT_ASC,
+            'id'=>SORT_DESC,
+        ];
+
+
+
 
         return $dataProvider;
     }

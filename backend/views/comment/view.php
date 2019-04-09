@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Comment */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '评论管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -31,13 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'content:ntext',
-            'status',
-            'create_time:datetime',
-            'userid',
+//            'status',
+            ['attribute'=>'status','value'=>$model->status0->name],
+            ['attribute'=>'create_time', 'value'=>date('Y-m-d H:i:s',$model->create_time)],
+//            'userid',
+            ['attribute'=>'userid', 'value'=>$model->user->username,],
             'email:email',
             'url:url',
-            'post_id',
-            'remind',
+//            'post_id',
+            ['attribute'=>'post_id', 'value'=>$model->post->title,],
+//            'remind',
         ],
     ]) ?>
 
