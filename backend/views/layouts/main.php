@@ -39,6 +39,7 @@ AppAsset::register($this);
                 '<li><span class="badge">'.Comment::getPengdingCommentCount().'</span></li>',
                 ['label' => '用户管理', 'url' => ['/user/index']],
                 ['label' => '管理员管理', 'url' => ['/adminuser/index']],
+                ['label' => '导入礼包码', 'url' => ['/imports/index']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

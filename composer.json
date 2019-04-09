@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "sizeg/yii2-jwt":"v1.1.0",
-        "yiisoft/yii2-redis": "^2.0"
+        "yiisoft/yii2-redis": "^2.0",
+        "phpoffice/phpexcel": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
