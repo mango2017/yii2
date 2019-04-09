@@ -5,7 +5,7 @@ use common\models\Country;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use common\models\LoginForm;
+use common\models\AdminLoginForm;
 use yii\filters\VerbFilter;
 use common\models\EntryForm;
 //http://localhost/advanced/backend/web/index.php/site/index
@@ -64,13 +64,13 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
-        if (!\Yii::$app->user->isGuest) {
+        if (!\Yii::$app->user->isGuest) {  //判断是否是游客登录
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new AdminLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->goBack();  //登录成功，回到登录前的页面
         } else {
             return $this->render('login', [
                 'model' => $model,

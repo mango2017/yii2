@@ -20,7 +20,7 @@ return [
     ],
     'components' => [
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\AdminUser',
             'enableAutoLogin' => true,
         ],
         'jwt' => [
