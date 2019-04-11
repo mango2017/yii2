@@ -17,6 +17,9 @@ return [
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
         ],
+        'v2' => [
+            'class' => 'backend\modules\v2\Comment',
+        ],
     ],
     'components' => [
         'user' => [
