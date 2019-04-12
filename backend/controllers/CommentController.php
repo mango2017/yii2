@@ -65,6 +65,9 @@ class CommentController extends Controller
     public function actionCreate()
     {
         $model = new Comment();
+        $model->aa();
+        $model->bb();exit;
+
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

@@ -28,6 +28,9 @@ class comment extends \common\models\Comment
             'content',
             'status',
             'create_time',
+            'aaa' => function ($model) {
+                return 1;
+            },
         ];
     }
 }

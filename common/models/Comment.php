@@ -65,6 +65,17 @@ class Comment extends \yii\db\ActiveRecord
         ];
     }
 
+    public function aa(){
+        echo 1;
+        $this->addError('id1','name is null');
+
+    }
+
+    public function bb(){
+        echo "走这里了吗？";
+        var_dump($this->hasErrors());
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -116,5 +127,10 @@ class Comment extends \yii\db\ActiveRecord
             return false;
         }
     }
+
+
+//    public function afterFind(){
+//        echo "查找之后执行的=".$this->id;
+//    }
 
 }
