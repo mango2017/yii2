@@ -41,6 +41,8 @@ AppAsset::register($this);
                 ['label' => '管理员管理', 'url' => ['/adminuser/index']],
                 ['label' => '导入礼包码', 'url' => ['/imports/index']],
                 ['label' => '导入微信好友', 'url' => ['/imports-wx/index']],
+                ['label' => '微信好友管理', 'url' => ['/wx-user/index']],
+
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
