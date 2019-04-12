@@ -36,8 +36,8 @@ class WxUserController extends Controller
     public function actionIndex()
     {
         $searchModel = new WxUserSearch();
-        var_dump(Yii::$app->request->queryParams);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
 
         return $this->render('index', [
             'searchModel' => $searchModel,

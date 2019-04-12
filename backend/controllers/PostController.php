@@ -37,7 +37,6 @@ class PostController extends Controller
     {
 //        var_dump(\Yii::$app->user->identity);exit;
         $searchModel = new PostSearch();
-        var_dump(Yii::$app->request->queryParams);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [

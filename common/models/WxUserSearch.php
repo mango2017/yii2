@@ -63,8 +63,11 @@ class WxUserSearch extends WxUser
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'sex' => $this->sex=='男'?1:($this->sex=='女'?2:0),
+            'sex' => $this->sex,
         ]);
+
+
+
 
         $query->andFilterWhere(['like', 'nickName', $this->nickName])
             ->andFilterWhere(['like', 'remarkName', $this->remarkName])
