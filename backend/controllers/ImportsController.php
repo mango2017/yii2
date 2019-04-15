@@ -59,7 +59,7 @@ class ImportsController extends Controller{
                     $info = \Yii::$app->db->createCommand()->insert('questionnaire_code', [
                         'code' => $data['0'],
                         'status' => 0,
-                        'code_type' => 1,//娃娃1 其他2
+                        'code_type' => $data['2'],//娃娃1 其他2
                     ])->execute();
 
 
