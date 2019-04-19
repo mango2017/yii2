@@ -20,7 +20,9 @@
         "yiisoft/yii2-swiftmailer": "*",
         "sizeg/yii2-jwt":"v1.1.0",
         "yiisoft/yii2-redis": "^2.0",
-        "phpoffice/phpexcel": "*"
+        "phpoffice/phpexcel": "*",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "php-amqplib/php-amqplib": "^2.9"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

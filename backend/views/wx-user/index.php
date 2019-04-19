@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
            // ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            ['attribute'=>'id','contentOptions'=>['style' => 'width: 55px']],
             'nickName',
             'remarkName',
             'sign',
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 else
                     return '未知';
 
-            }],
+            },'filter'=>['未知','男','女'],'contentOptions'=>['style' => 'width: 100px']],
             'city',
 
           //  ['class' => 'yii\grid\ActionColumn'],

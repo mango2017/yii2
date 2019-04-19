@@ -8,6 +8,8 @@ use common\models\WxUserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\httpclient\Client;
+
 
 /**
  * WxUserController implements the CRUD actions for WxUser model.
@@ -124,5 +126,20 @@ class WxUserController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+
+    public function actionUrls(){
+        $params = [
+//            'https://graph.z.qq.com/moc2/authorize',    //wap地址 -- 文档上是这个,但是跳转会出现错误
+            'https://graph.qq.com/oauth2.0/authorize',    //pc地址-- 支持wap
+            'response_type' => 'code',    // 返回的参数才有code
+            'client_id' => '123456', //app_id
+            'redirect_uri' => "http://www.baidu.com",    // 使用Client对象生成的地址参数,自动进行了urlencode编码
+            'state' => 'id=10', //状态值, 防止CSRF攻击, 会原样返回给回调地址
+        ];
+
+
+        echo  (new Client())->createRequest()->setUrl($params)->getFullUrl();
     }
 }

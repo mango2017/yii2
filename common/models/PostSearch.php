@@ -84,13 +84,13 @@ class PostSearch extends Post
             ->andFilterWhere(['like', 'tags', $this->tags]);
 
 
-        $query->join('INNER JOIN','Adminuser','post.author_id = Adminuser.id');
-        $query->andFilterWhere(['like','Adminuser.nickname',$this->authorName]);
+        $query->join('INNER JOIN','adminuser','post.author_id = adminuser.id');
+        $query->andFilterWhere(['like','adminuser.nickname',$this->authorName]);
 
         //按作者进行排序
         $dataProvider->sort->attributes['authorName'] = [
-          'asc'=>['Adminuser.nickname'=>SORT_ASC],
-          'desc'=>['Adminuser.nickname'=>SORT_DESC],
+          'asc'=>['adminuser.nickname'=>SORT_ASC],
+          'desc'=>['adminuser.nickname'=>SORT_DESC],
         ];
 
 
